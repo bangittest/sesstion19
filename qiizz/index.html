@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz App</title>
+    <style>
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: lightgray;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: green;
+            transition: width 6s linear;
+        }
+
+        .track-bar {
+            width: 100%;
+            height: 10px;
+            background-color: lightgray;
+        }
+
+        .track-bar-fill {
+            height: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quiz App</h1>
+    <div id="question-container">
+        <h2 id="question"></h2>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+    </div>
+    <div class="track-bar">
+        <div class="track-bar-fill" id="track-bar-fill"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

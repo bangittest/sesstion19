@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            height: 100vh;
+            background: rgba(168, 117, 117, 0.336);
+        }
+
+        .container {
+            width: 80%;
+            height: 80%;
+            margin: 50px auto;
+        }
+
+        .main {
+            height: 80%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .list-image {
+            width: 100%;
+            height: 25%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .list-image div {
+            flex: 1;
+            padding: 5px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .control {
+            position: absolute;
+            top: 50%;
+            font-size: 50px;
+            color: aliceblue;
+            transform: translateY(-50%);
+
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="main">
+                <img class="img-feature" src="img1.webp" alt="">
+                <div class="control prev">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
+                <div class="control next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="list-image">
+                <div><img src="img2.jpg" alt=""></div>
+                <div class="active"><img src="img3.jpg" alt=""></div>
+                <div><img src="img4.jpg" alt=""></div>
+                <div><img src="img1.jpg" alt=""></div>
+                <div><img src="img4.jpg" alt=""></div>
+
+            </div>
+
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+
+</html>

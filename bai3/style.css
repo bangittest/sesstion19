@@ -1,0 +1,14 @@
+.modal2{
+    background-color:bisque;
+    width: 480px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.modal2>button{
+
+border: 0px;
+background-color: bisque;
+
+
+}

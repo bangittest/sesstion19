@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .todo-item .todo-text {
+            flex-grow: 1;
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Todo List</h2>
+        <input type="text" id="todo-input" placeholder="Add a task">
+        <div id="todo-list"></div>
+        <div class="button-container">
+            <button onclick="addTodo()">Add</button>
+            <button onclick="updateTodo()">Update</button>
+            <button onclick="deleteTodo()">Delete</button>
+            <button onclick="clearTodos()">Clear All</button>
+        </div>
+    </div>
+
+    <script>
+        var todos = [];
+
+        function renderTodoList() {
+            var todoListContainer = document.getElementById('todo-list');
+            todoListContainer.innerHTML = '';
+
+            todos.forEach(function (todo, index) {
+                var todoItem = document.createElement('div');
+                todoItem.className = 'todo-item';
+
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = index;
+                checkbox.checked = todo.completed;
+                checkbox.addEventListener('change', toggleTodo);
+
+                var todoText = document.createElement('span');
+                todoText.className = 'todo-text';
+                todoText.innerText = todo.text;
+
+                todoItem.appendChild(checkbox);
+                todoItem.appendChild(todoText);
+                todoListContainer.appendChild(todoItem);
+            });
+        }
+
+        function addTodo() {
+            var todoInput = document.getElementById('todo-input');
+            var todoText = todoInput.value.trim();
+
+            if (todoText !== '') {
+                var newTodo = {
+                    text: todoText,
+                    completed: false
+                };
+
+                todos.push(newTodo);
+                todoInput.value = '';
+                renderTodoList();
+            }
+        }
+
+        function updateTodo() {
+            var checkedTodos = Array.from(document.querySelectorAll('.todo-item input[type="checkbox"]:checked'));
+            checkedTodos.forEach(function (checkbox) {
+                var todoIndex = checkbox.value;
+                todos[todoIndex].completed = true;
+            });
+
+            renderTodoList();
+        }
+
+        function deleteTodo() {
+            var checkedTodos = Array.from(document.querySelectorAll('.todo-item input[type="checkbox"]:checked'));
+            checkedTodos.forEach(function (checkbox) {
+                var todoIndex = checkbox.value;
+                todos.splice(todoIndex, 1);
+            });
+
+            renderTodoList();
+        }
+
+        function toggleTodo() {
+            var todoIndex = this.value;
+            todos[todoIndex].completed = this.checked;
+
+            renderTodoList();
+        }
+
+        function clearTodos() {
+            todos = [];
+            renderTodoList();
+        }
+
+        renderTodoList();
+    </script>
+</body>
+
+</html>
